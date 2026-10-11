@@ -1,0 +1,93 @@
+lwm2m (OMA LightweightM2M content formats and object model, in Go)
+Copyright 2026 Abhinav Gautam
+
+This module is licensed under the Apache License, Version 2.0 (LICENSE).
+
+The code was written for SigmaM2M, a oneM2M platform, from the OMA LwM2M
+technical specifications and the RFCs they reference (PROVENANCE.md). It
+contains no code from other projects. The source files that come from
+SigmaM2M (codec.go, lwm2mcbor.go, model.go, codec_conformance_test.go)
+carry no per-file copyright header, the convention of the code they come
+from; the copyright line above covers them. Files added for this module
+carry "Copyright 2026 Abhinav Gautam" and "SPDX-License-Identifier:
+Apache-2.0".
+
+Trademarks
+----------
+
+OMA, Open Mobile Alliance, OMA SpecWorks, LightweightM2M and LwM2M are
+names and marks of OMA SpecWorks; IPSO is a name of the former IPSO
+Alliance, now part of OMA SpecWorks. This module is not made, endorsed
+or supported by them, and is not affiliated with them; the names are
+used only to say what the module implements.
+
+Object model data (OMNA LwM2M registry)
+---------------------------------------
+
+The built-in object model in model.go (object and resource IDs, data
+types, which resources are executable, which objects exist) is a set of
+facts taken from the object definitions of the OMNA LwM2M registry,
+https://github.com/OpenMobileAlliance/lwm2m-registry (objects 0, 1, 3,
+4, 5, 9, 21, 25, 26, and 3303 from IPSO). No registry file is included
+and no description text was copied; resource names are our own short
+identifiers and units are UCUM codes. Credit: the Open Mobile Alliance
+(OMA SpecWorks) and the IPSO Alliance for the object definitions. The
+registry's object definition files carry this licence:
+
+  BSD-3 Clause License
+
+  Copyright Open Mobile Alliance (each definition file names its year).
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  1. Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+  3. Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived
+  from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE.
+
+Dependencies
+------------
+
+- github.com/fxamacker/cbor/v2 v2.9.4: MIT licence, Copyright (c)
+  2019-present Faye Amacker.
+- github.com/x448/float16 v0.8.4 (indirect, through cbor): MIT licence,
+  Copyright (c) 2019-present Montgomery Edwards and Faye Amacker.
+- The Go standard library (BSD-3-Clause, Copyright The Go Authors).
+
+Interop tests (interop/, a separate test-only module)
+-----------------------------------------------------
+
+interop/peer/Dockerfile downloads Eclipse Leshan's demo client, server
+and bootstrap server 2.0.0-M18 (Eclipse Public License 2.0 or Eclipse
+Distribution License 1.0, Copyright the Leshan contributors) from Maven
+Central into an eclipse-temurin:21-jre-alpine image at test time; nothing
+of Leshan is copied into this repository. The interop module also uses
+github.com/plgd-dev/go-coap/v3 (Apache-2.0) and its dependencies
+(github.com/pion/dtls/v3, pion/logging and pion/transport: MIT;
+golang.org/x/*: BSD-3-Clause; go.uber.org/atomic: MIT;
+github.com/dsnet/golib/memfile: BSD-3-Clause).
+
+Test data
+---------
+
+Every value in the tests and examples is made up, or is a byte example
+of the specification used as a test vector (clause numbers in the tests).
