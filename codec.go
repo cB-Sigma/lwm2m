@@ -550,7 +550,7 @@ type senmlCBOR struct {
 	VS  *string `cbor:"3,keyasint,omitempty"`
 	VB  *bool   `cbor:"4,keyasint,omitempty"`
 	T   any     `cbor:"6,keyasint,omitempty"`
-	VD  []byte  `cbor:"8,keyasint,omitempty"`
+	VD  *[]byte `cbor:"8,keyasint,omitempty"`
 	VLO *string `cbor:"vlo,omitempty"`
 }
 
@@ -602,7 +602,7 @@ func decodeSenMLCBOR(b []byte, root string) ([]TimedValue, error) {
 			*f.out = &n
 		}
 		if r.VD != nil {
-			h := hex.EncodeToString(r.VD)
+			h := hex.EncodeToString(*r.VD)
 			j.VD = &h
 		}
 		js = append(js, j)
@@ -642,7 +642,7 @@ func encodeSenMLCBOR(m Model, vals []Value) ([]byte, error) {
 		case bool:
 			r.VB = &x
 		case []byte:
-			r.VD = x
+			r.VD = &x
 		default:
 			return nil, fmt.Errorf("%s: %T cannot be written as SenML", v.Path, v.V)
 		}

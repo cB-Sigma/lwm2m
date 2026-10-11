@@ -69,6 +69,13 @@ Dependencies
 
 - github.com/fxamacker/cbor/v2 v2.9.4: MIT licence, Copyright (c)
   2019-present Faye Amacker.
+- For the client and server packages (since v0.2.0):
+  github.com/plgd-dev/go-coap/v3 v3.5.4 (Apache-2.0, Copyright the
+  go-coap authors), github.com/pion/dtls/v3 v3.1.10, pion/logging and
+  pion/transport (MIT, Copyright The Pion community), golang.org/x/crypto,
+  x/net, x/sync, x/sys and x/exp (BSD-3-Clause, Copyright The Go
+  Authors), go.uber.org/atomic (MIT, Copyright Uber Technologies) and
+  github.com/dsnet/golib/memfile (BSD-3-Clause, Copyright Joe Tsai).
 - github.com/x448/float16 v0.8.4 (indirect, through cbor): MIT licence,
   Copyright (c) 2019-present Montgomery Edwards and Faye Amacker.
 - The Go standard library (BSD-3-Clause, Copyright The Go Authors).

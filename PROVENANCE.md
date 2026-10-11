@@ -15,6 +15,15 @@ depth, plain text, CBOR, LwM2M JSON), `Encode`, `Decode` and
 `DecodeSenMLNames`, and the CBOR encoders started to take the object
 model into account (see CHANGELOG.md).
 
+For v0.2.0 (2026-10-11 and 12) the `client` package is the device
+logic of lwm2m-sim's simulator (same author, written from the same
+specifications), moved into this module with its package name changed
+and a DTLS certificate mode added; the simulator now builds on it. The
+`server` package (registrations, operations, the bootstrap server),
+`ddf.go` and the tests are new, our own code from Core and Transport
+1.1.1 and RFC 7252, 7641 and 8132. No code was taken from Leshan or the
+Go projects in the README.
+
 ## Sources
 
 | Area (files) | Followed |
@@ -24,6 +33,8 @@ model into account (see CHANGELOG.md).
 | LwM2M CBOR (lwm2mcbor.go) | Core 1.2.2 clause 7.5.4 (its byte examples are test vectors); RFC 8949 |
 | Registration payload, alternate path (codec.go) | RFC 6690 link format; Transport 1.1.1 clause 6.4.1 |
 | Object model (model.go) | OMNA LwM2M registry, facts only (see NOTICE) |
+| Object definition files (ddf.go) | the layout of the OMNA registry's DDF XML files (element names only); the test uses a made-up object |
+| Client and server roles (client/, server/) | Core 1.1.1 clauses 5 (bootstrap), 6 (registration, device management, information reporting) and appendix E (Security and Server objects); Transport 1.1.1 clause 5 (CoAP and DTLS bindings); RFC 7252, RFC 7641 (observe), RFC 8132 (FETCH, iPATCH) |
 
 Where the documents leave something open, the code says what it does in
 a comment: opaque values in JSON formats are read in either base64
